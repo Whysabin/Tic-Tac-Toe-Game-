@@ -1,0 +1,459 @@
+/* General Body Styling */
+body {
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+/* Main Screen Styling */
+.screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    color: #ff0055; /* Squid Game Pink */
+    text-shadow: 0 0 10px #ff0055;
+}
+
+/* Button Styling */
+button {
+    background-color: #111;
+    color: #ff0055; /* Pink text color */
+    border: 2px solid #ff0055;
+    padding: 10px 20px;
+    margin: 10px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: color 0.3s ease, background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #222;
+    color: #ff66a3;
+}
+
+/* Game Board Styling */
+#gameBoard {
+    display: grid;
+    grid-template-columns: repeat(3, 150px); /* Increased size of cells */
+    grid-template-rows: repeat(3, 150px); /* Increased size of cells */
+}
+
+/* Cell Styling */
+.cell {
+    width: 150px; /* Increased width */
+    height: 150px; /* Increased height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 5em; /* Increased font size */
+    cursor: pointer;
+    background-color: black;
+    position: relative;
+    border-top: 7px solid #fff;  /* Increased top border thickness */
+    border-left: 7px solid #fff;  /* Increased left border thickness */
+}
+
+/* Removing unnecessary borders for specific cells */
+.cell:nth-child(1) {
+    border-top: none; /* No top border for the first cell */
+    border-left: none; /* No left border for the first cell */
+}
+
+.cell:nth-child(2) {
+    border-top: none; /* No top border for the second cell */
+}
+
+.cell:nth-child(3) {
+    border-top: none; /* No top border for the third cell */
+    border-right: none; /* No right border for the last cell in the row */
+}
+
+.cell:nth-child(4) {
+    border-left: none; /* No left border for the first cell in the second row */
+}
+
+.cell:nth-child(7) {
+    border-left: none; /* No left border for the first cell in the third row */
+}
+
+.cell:nth-child(6) {
+    border-right: none; /* No right border for the last cell in the second row */
+}
+
+.cell:nth-child(9) {
+    border-right: none; /* No right border for the last cell in the third row */
+}
+
+/* X and O Styling */
+.cell.x {
+    color: #ff007f;
+    text-shadow: 0 0 8px #ff007f, 0 0 12px #ff007f;
+}
+
+.cell.o {
+    color: #00c08b;
+    text-shadow: 0 0 8px #00c08b, 0 0 12px #00c08b;
+}
+
+/* Background X and O Styling */
+.background-letters {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+.big-x, .big-o {
+    position: absolute;
+    font-size: 30vw;
+    font-weight: bold;
+    color: #ff0055;
+    opacity: 0.2;
+    z-index: 1;
+}
+
+.big-x {
+    top: 0;
+    left: 0;
+    transform: translate(-20%, -20%);
+}
+
+.big-o {
+    bottom: 0;
+    right: 0;
+    transform: translate(20%, 20%);
+}
+
+/* Preloader Styling */
+#preloader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    color: white;
+    font-weight: bold;
+    font-size: 4em;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.squid-game-text {
+    display: flex;
+    gap: 0.1em;
+}
+
+.squid-game-text span {
+    display: inline-block;
+    position: relative;
+    color: #ff0055;
+    text-shadow: 
+      0 0 5px #ff0055,
+      0 0 10px #ff0055,
+      0 0 15px #ff0055,
+      0 0 20px rgba(255, 0, 85, 0.7);
+    animation: squidTextGlow 1.5s ease-in-out infinite;
+    font-size: 1.2em;
+}
+
+/* Glow Effect Animation */
+@keyframes squidTextGlow {
+    0%, 100% {
+      text-shadow: 
+        0 0 5px #ff0055,
+        0 0 10px #ff0055,
+        0 0 15px #ff0055,
+        0 0 20px rgba(255, 0, 85, 0.7);
+      transform: scale(1);
+    }
+    50% {
+      text-shadow: 
+        0 0 8px #ff0055,
+        0 0 16px #ff0055,
+        0 0 24px #ff0055,
+        0 0 32px rgba(255, 0, 85, 0.9);
+      transform: scale(1.1);
+    }
+}
+
+/* Small Delay to Stagger Animation */
+.squid-game-text span:nth-child(odd) {
+    animation-delay: 0.2s;
+}
+.squid-game-text span:nth-child(even) {
+    animation-delay: 0.4s;
+}
+#scoreBoard {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    color: #ffffff;
+}
+
+#scoreBoard span {
+    margin: 0 10px;
+    font-weight: bold;
+    color: #ff0055; /* Matching Squid Game pink for labels */
+    
+}
+
+#scoreBoard span span {
+    color: #00c08b; /* Matches O color for win counts */
+    
+    font-weight: bold;
+}
+
+#player1WinCount, #tieCount, #computerWinCount, #player2WinCount {
+    font-size: 1.1rem; /* Slightly larger for visibility */
+}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    #scoreBoard {
+        flex-direction: column;
+        align-items: center;
+        font-size: 0.9rem;
+    }
+    #scoreBoard span {
+        margin: 8px 0;
+    }
+}
+
+ /* Wrapper for player turn details */
+.details {
+    position: relative; /* Allows for positioning adjustments */
+  top: -40px; /* Adjust this value as needed to move it up */
+  text-align: center;
+}
+
+.players {
+    position: relative;
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    width: 200px; /* Adjust width as needed */
+    justify-content: space-between;
+}
+
+.players span {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+/* Slider that moves under the active player */
+.slider {
+    position: absolute;
+    bottom: 0;
+    height: 5px;
+    width: 50%; /* Set to half width to align with each player */
+    background-color: #333;
+    transition: transform 0.3s ease;
+}
+
+/* Highlight X turn */
+.players.Xturn .slider {
+    transform: translateX(0); /* Aligns with X */
+}
+
+.players.Oturn .slider {
+    transform: translateX(100%); /* Moves slider to O's position */
+}
+
+/* Highlight the active player's text */
+.players.Xturn .Xturn {
+    color: #ff0055; /* Color when X is active */
+}
+
+.players.Oturn .Oturn {
+    color: #00c08b; /* Color when O is active */
+}
+
+/* Overlay to darken the background with a subtle blur */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(6px); /* Blurs the background for a modern effect */
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeInOverlay 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeInOverlay {
+    from { background-color: rgba(0, 0, 0, 0); }
+    to { background-color: rgba(0, 0, 0, 0.8); }
+}
+/* Popup content styling */
+.popup-content {
+    background-color: #2c3e50; /* Soft dark gray-blue background */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2); /* Lighter shadow for depth */
+    color: #ecf0f1; /* Soft light gray text */
+    text-align: center;
+    transform: scale(0.8); /* Slightly smaller to start */
+    animation: popIn 0.5s ease forwards;
+    max-width: 90%; /* Responsive sizing */
+}
+
+@keyframes popIn {
+    from {
+        transform: scale(0.8);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Fade-in for overlay and popup */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+/* Style for the win message text */
+.popup-content h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    font-weight: bold;
+    color: #1abc9c; /* Soft emerald green for win message */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4); /* Subtle shadow for readability */
+}
+
+/* Style for the button */
+.popup-content button {
+    background-color: #1abc9c; /* Emerald green button */
+    color: #ffffff; /* White text for contrast */
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+    font-weight: bold;
+    transition: transform 0.2s, background-color 0.3s;
+}
+
+.popup-content button:hover {
+    background-color: #16a085; /* Darker emerald on hover */
+    transform: scale(1.05); /* Slightly enlarge */
+}
+
+/* Responsive Adjustments for Mobile */
+@media (max-width: 600px) {
+    #preloader {
+        font-size: 2em; /* Smaller font size on mobile */
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .squid-game-text {
+        font-size: 1em; /* Adjust font size for smaller screens */
+    }
+
+    .squid-game-text span {
+        font-size: 1.5em; /* Make the text slightly smaller on mobile */
+    }
+}
+@media (max-width: 480px) {
+    .big-x, .big-o {
+        font-size: 50vw; /* Further reduce the font size on very small screens */
+    }
+
+    .big-x {
+        top: 2%; /* Adjust position to fit even better on small screens */
+        left: 2%;
+        transform: translate(-5%, -5%);
+    }
+
+    .big-o {
+        bottom: 2%; /* Adjust position to fit even better on small screens */
+        right: 2%;
+        transform: translate(5%, 5%);
+    }
+}
+
+/* Mobile view adjustments */
+@media (max-width: 768px) {
+    .score-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      height: 100vh; /* Adjust to create even spacing within the view */
+      padding: 20px;
+    }
+    
+    .score-item {
+      width: 100%;          /* Full width */
+      text-align: center;    /* Center-align text */
+      font-size: 1.2em;      /* Adjust font size as needed */
+    }
+  }
+  
+
+    /* Adjust the count display under each label */
+    .scoreItem .count {
+        font-size: 1rem;
+        font-weight: bold;
+        margin-top: 4px;
+    }
+/* Base grid styles */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    width: 100%;
+    height: auto;
+    margin: 0 auto; /* Centering the grid */
+    padding: 0 10px; /* Adds gap on the left and right */
+}
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .grid {
+        gap: 5px; /* Reduce the space between grid items */
+        width: 90%; /* Adjust the width to add margin on both sides */
+        padding: 0 15px; /* Adds padding for left and right */
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .grid {
+        gap: 3px; /* Smaller gap for extra small screens */
+        width: 85%; /* Adjust width further for smaller screens */
+        padding: 0 10px; /* Smaller padding */
+    }
+}

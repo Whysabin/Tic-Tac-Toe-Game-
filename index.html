@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tic-Tac-Toe</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <audio id="oSound" src="images/pop.mp3" preload="auto"></audio>
+  <audio id="xSound" src="images/pop.mp3" preload="auto"></audio>
+
+  <div id="preloader">
+    <div class="background-letters">
+      <span class="big-x">X</span>
+      <span class="big-o">O</span>
+    </div>
+    <div class="squid-game-text">
+      <span>T</span><span>I</span><span>C</span> <span>-</span>
+      <span>T</span><span>A</span><span>C</span> <span>-</span>
+      <span>T</span><span>O</span><span>E</span>
+    </div>
+  </div>
+
+  <div id="startScreen" class="screen">
+    <h1>Choose Mode</h1>
+    <button onclick="startGame('single')">Single Player</button>
+    <button onclick="startGame('multi')">Multiplayer</button>
+  </div>
+
+  <div id="gameScreen" class="screen" style="display: none;">
+    <!-- Turn Indicator -->
+    <div class="details">
+      <div class="players Xturn" id="turnIndicator">
+        <span class="Xturn">X's Turn</span>
+        <span class="Oturn">O's Turn</span>
+        <div class="slider"></div>
+      </div>
+    </div>
+
+    <!-- Game Board -->
+    <div id="gameBoard">
+      <div class="cell" data-index="0"></div>
+      <div class="cell" data-index="1"></div>
+      <div class="cell" data-index="2"></div>
+      <div class="cell" data-index="3"></div>
+      <div class="cell" data-index="4"></div>
+      <div class="cell" data-index="5"></div>
+      <div class="cell" data-index="6"></div>
+      <div class="cell" data-index="7"></div>
+      <div class="cell" data-index="8"></div>
+    </div>
+
+    <!-- Score Board -->
+    <div id="scoreBoard">
+      <span>Player 1 : <span id="player1WinCount">0</span></span>
+      <span>Tie Score:  <span id="tieCount">0</span></span>
+      <span id="computerWinCounter" style="display: none;">Computer : <span id="computerWinCount">0</span></span>
+      <span id="player2WinCounter" style="display: none;">Player 2 : <span id="player2WinCount">0</span></span>
+    </div>
+
+  
+
+  </div>
+<!-- Add this to your HTML just after the #gameScreen div -->
+<div id="winPopup" class="popup-overlay fade-in" style="display: none;">
+    <div class="popup-content">
+        <h2 id="winMessage" >Computer Wins!</h2>
+        <button onclick="restartGame()">Play Again</button>
+    </div>
+</div>
+
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
